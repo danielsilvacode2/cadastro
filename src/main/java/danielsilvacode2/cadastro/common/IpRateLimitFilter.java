@@ -24,8 +24,8 @@ public class IpRateLimitFilter extends OncePerRequestFilter {
 
     private Bucket createBucket() {
         Bandwidth limit = Bandwidth.classic(
-                3,
-                Refill.intervally(3, Duration.ofMinutes(1))
+                5,
+                Refill.intervally(5, Duration.ofMinutes(1))
         );
         return Bucket.builder()
                 .addLimit(limit)
