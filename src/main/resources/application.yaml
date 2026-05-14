@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: cadastro
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
