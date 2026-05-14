@@ -9,6 +9,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@CrossOrigin
 @Component
 public class IpRateLimitFilter extends OncePerRequestFilter {
 
@@ -24,8 +26,8 @@ public class IpRateLimitFilter extends OncePerRequestFilter {
 
     private Bucket createBucket() {
         Bandwidth limit = Bandwidth.classic(
-                5,
-                Refill.intervally(5, Duration.ofMinutes(1))
+                2,
+                Refill.intervally(2, Duration.ofMinutes(1))
         );
         return Bucket.builder()
                 .addLimit(limit)
@@ -49,6 +51,23 @@ public class IpRateLimitFilter extends OncePerRequestFilter {
         if (bucket.tryConsume(1)) {
             filterChain.doFilter(request, response);
         } else {
+
+
+            response.setHeader(
+                    "Access-Control-Allow-Origin",
+                    "http://127.0.0.1:5500"
+            );
+
+            response.setHeader(
+                    "Access-Control-Allow-Methods",
+                    "GET, POST, PUT, DELETE, OPTIONS"
+            );
+
+            response.setHeader(
+                    "Access-Control-Allow-Headers",
+                    "*"
+            );
+
             response.setStatus(429);
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
