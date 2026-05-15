@@ -1,5 +1,7 @@
 package danielsilvacode2.cadastro.common;
 
+import danielsilvacode2.cadastro.common.dto.ErroCampoDto;
+import danielsilvacode2.cadastro.common.dto.ErroRespostaDto;
 import danielsilvacode2.cadastro.common.exceptions.RegistroDuplicadoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

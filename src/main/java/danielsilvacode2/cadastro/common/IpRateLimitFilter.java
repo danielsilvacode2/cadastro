@@ -1,6 +1,7 @@
 package danielsilvacode2.cadastro.common;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import danielsilvacode2.cadastro.common.dto.ErroRespostaDto;
 import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.Bucket;
 import io.github.bucket4j.Refill;

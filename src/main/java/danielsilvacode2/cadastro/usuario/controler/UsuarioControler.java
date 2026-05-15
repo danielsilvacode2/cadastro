@@ -1,10 +1,11 @@
 package danielsilvacode2.cadastro.usuario.controler;
 
 
-import danielsilvacode2.cadastro.common.ErroRespostaDto;
+import danielsilvacode2.cadastro.common.dto.ErroRespostaDto;
 import danielsilvacode2.cadastro.usuario.Usuario;
 import danielsilvacode2.cadastro.usuario.controler.dto.UsuarioDto;
 import danielsilvacode2.cadastro.usuario.controler.dto.UsuarioMapper;
+import danielsilvacode2.cadastro.usuario.service.EmailService;
 import danielsilvacode2.cadastro.usuario.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,7 @@ public class UsuarioControler {
 
     private final UsuarioService service;
     private final UsuarioMapper mapper;
+    private final EmailService emailService;
 
 
     @PostMapping
@@ -32,6 +34,10 @@ public class UsuarioControler {
         Usuario usuario = mapper.toEntity(dtoRequest);
         usuario.setId(UUID.randomUUID().toString());
         service.salvar(usuario);
+
+
+
+        emailService.enviar(usuario.getEmail(),"Protocolo de Atendimento", usuario.getProtocolo(), usuario.getNome());
 
         UsuarioDto dtoResponse = mapper.toDto(usuario);
 

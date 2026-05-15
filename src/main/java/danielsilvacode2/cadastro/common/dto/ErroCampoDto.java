@@ -1,4 +1,4 @@
-package danielsilvacode2.cadastro.common;
+package danielsilvacode2.cadastro.common.dto;
 
 
 
