@@ -1,6 +1,7 @@
-package danielsilvacode2.cadastro.usuario.controler.dto;
+package danielsilvacode2.cadastro.usuario.controler.mapper;
 
 import danielsilvacode2.cadastro.usuario.Usuario;
+import danielsilvacode2.cadastro.usuario.controler.dto.UsuarioDto;
 import org.springframework.stereotype.Component;
 
 @Component

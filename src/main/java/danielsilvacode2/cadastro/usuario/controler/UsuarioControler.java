@@ -4,7 +4,7 @@ package danielsilvacode2.cadastro.usuario.controler;
 import danielsilvacode2.cadastro.common.dto.ErroRespostaDto;
 import danielsilvacode2.cadastro.usuario.Usuario;
 import danielsilvacode2.cadastro.usuario.controler.dto.UsuarioDto;
-import danielsilvacode2.cadastro.usuario.controler.dto.UsuarioMapper;
+import danielsilvacode2.cadastro.usuario.controler.mapper.UsuarioMapper;
 import danielsilvacode2.cadastro.usuario.service.EmailService;
 import danielsilvacode2.cadastro.usuario.service.UsuarioService;
 import jakarta.validation.Valid;
